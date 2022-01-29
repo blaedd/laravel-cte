@@ -1,10 +1,11 @@
 <?php
 
-namespace Staudenmeir\LaravelCte\Query\Grammars;
+namespace Staudenmeir\LaravelCte\Query\Grammars\Traits;
 
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Str;
 use Staudenmeir\LaravelCte\Query\Builder as CteBuilder;
+use function collect;
 
 trait CompilesExpressions
 {

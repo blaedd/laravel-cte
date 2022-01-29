@@ -166,9 +166,9 @@ class Builder extends Base
      */
     public function insertUsing(array $columns, $query)
     {
-	    if (method_exists($this, 'applyBeforeQueryCallbacks')) {
-		    $this->applyBeforeQueryCallbacks();
-	    }
+        if (method_exists($this, 'applyBeforeQueryCallbacks')) {
+            $this->applyBeforeQueryCallbacks();
+        }
 
         [$sql, $bindings] = $this->createSub($query);
 
