@@ -1,9 +1,9 @@
 <?php
 
-namespace Tests;
+namespace Staudenmeir\LaravelCte\Tests;
 
 use Staudenmeir\LaravelCte\Query\Builder;
-use Tests\Models\User;
+use Staudenmeir\LaravelCte\Tests\Models\User;
 
 class EloquentTest extends TestCase
 {
