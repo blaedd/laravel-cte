@@ -2,7 +2,7 @@
 
 namespace Staudenmeir\LaravelCte\Tests;
 
-use Staudenmeir\LaravelCte\Query\Builder;
+use Illuminate\Database\Query\Builder;
 use Staudenmeir\LaravelCte\Tests\Models\User;
 
 class EloquentTest extends TestCase

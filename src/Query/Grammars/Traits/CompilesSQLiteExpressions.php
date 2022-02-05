@@ -20,14 +20,16 @@ trait CompilesSQLiteExpressions
      */
     protected function compileUnion(array $union)
     {
-        $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 9);
+        $backtrace = debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS, 10);
 
-        if (($backtrace[6]['class'] === CteBuilder::class && $backtrace[6]['function'] === 'withExpression')
-            || ($backtrace[7]['class'] === CteBuilder::class && $backtrace[7]['function'] === 'withExpression')
-            || ($backtrace[8]['class'] === CteBuilder::class && $backtrace[8]['function'] === 'withExpression')) {
-            $conjunction = $union['all'] ? ' union all ' : ' union ';
+        $builderClasses = [CteBuilder::class, 'Staudenmeir\EloquentEagerLimitXLaravelCte\Query\Builder'];
 
-            return $conjunction.$union['query']->toSql();
+        for ($i = 6; $i <= 9; $i++) {
+            if (in_array($backtrace[$i]['class'], $builderClasses) && $backtrace[$i]['function'] === 'withExpression') {
+                $conjunction = $union['all'] ? ' union all ' : ' union ';
+
+                return $conjunction.$union['query']->toSql();
+            }
         }
 
         return parent::compileUnion($union);
